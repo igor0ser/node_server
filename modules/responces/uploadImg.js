@@ -1,8 +1,8 @@
 var fs = require("fs");
 var multiparty = require('multiparty');
-var config = require('./config');
-var template = require('./template');
-var fs2 = require('./fs2');
+var config = require('./../helpers/config');
+var templates = require('./../helpers/templates');
+var fs2 = require('./../helpers/fs2');
 var path = require('path');
 
 function uploadImg(req, res) {
@@ -22,7 +22,7 @@ function uploadImg(req, res) {
 		var writeStream = fs.createWriteStream(newPath);
 		readStream.pipe(writeStream);
 		res.writeHead(200, {'content-type': 'text/html'});
-		res.end(template.uploadSuccess);
+		res.end(templates.uploadSuccess);
 	});
 }
 

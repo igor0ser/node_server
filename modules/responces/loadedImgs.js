@@ -1,7 +1,7 @@
 var fs = require('fs');
 var path = require('path');
-var config = require('./config');
-var fs2 = require('./fs2');
+var config = require('./../helpers/config');
+var fs2 = require('./../helpers/fs2');
 
 var mimeTypes = {
 	'html': 'text/html',

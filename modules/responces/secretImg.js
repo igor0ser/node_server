@@ -1,7 +1,7 @@
 var fs = require("fs");
 var multiparty = require('multiparty');
-var config = require('./config');
-var template = require('./template');
+var config = require('./../helpers/config');
+var templates = require('./../helpers/templates');
 
 function secretImg(req, res) {
 	var querryArr = req.url.split('?')[1].split('=');
@@ -13,7 +13,7 @@ function secretImg(req, res) {
 		fileStream.pipe(res);
 	} else {
 		res.writeHead(403, {'Content-Type': 'text/html'});
-		res.end(template.wrongPassword);
+		res.end(templates.wrongPassword);
 	}
 
 }

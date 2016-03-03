@@ -1,7 +1,7 @@
 var fs = require('fs');
 var path = require('path');
-var config = require('./config');
-var fs2 = require('./fs2');
+var config = require('./../helpers/config');
+var fs2 = require('./../helpers/fs2');
 
 var mimeTypes = {
 	'html': 'text/html',
@@ -19,6 +19,7 @@ function getLastImage() {
 }
 
 function lastImg(req, res){
+	console.log('last');
 	var filename = getLastImage();
 	var mimeType = mimeTypes[path.extname(filename).split('.')[1]];
 	res.writeHead(200, {'Content-Type': mimeType});

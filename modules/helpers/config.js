@@ -1,5 +1,4 @@
 var config = {
-	PORT: 3000,
 	PASSWORD: '123',
 	SECRET_IMG: 'img/secret.jpg',
 	START_IMG: 'img/start.jpg',
