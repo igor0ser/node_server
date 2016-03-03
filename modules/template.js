@@ -34,6 +34,7 @@ var template = {
 				<a href="http://localhost:3000/"><h3>Go to the last loaded image</h3></a>
 				<a href="http://localhost:3000/list"><h3>Go to the list of loaded images</h3></a>
 			</div>
+			<img src="img_download/IMG_3657.JPG" alt="error error error"/>
 		</body>
 		</html>
 	`,

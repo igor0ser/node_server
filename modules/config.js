@@ -4,7 +4,7 @@ var config = {
 	SECRET_IMG: 'img/secret.jpg',
 	START_IMG: 'img/start.jpg',
 	LOG_FILE: 'last.log',
-	IMF_FOLDER: 'img_download'
+	IMG_FOLDER: 'img_download'
 }
 
 module.exports = config;

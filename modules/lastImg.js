@@ -1,7 +1,7 @@
 var fs = require('fs');
 var path = require('path');
 var config = require('./config');
-var fileExists = require('./fileExists');
+var fs2 = require('./fs2');
 
 var mimeTypes = {
 	'html': 'text/html',
@@ -13,8 +13,8 @@ var mimeTypes = {
 };
 
 function getLastImage() {
-	console.log(fileExists(config.LOG_FILE));
-	if (!fileExists(config.LOG_FILE)) {return config.START_IMG;}
+	console.log(fs2.fileExists(config.LOG_FILE));
+	if (!fs2.fileExists(config.LOG_FILE)) {return config.START_IMG;}
 	return new Buffer(fs.readFileSync(config.LOG_FILE)).toString();
 }
 
