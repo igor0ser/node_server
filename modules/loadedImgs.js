@@ -17,8 +17,13 @@ function loadedImgs(req, res){
 	var filename = config.IMG_FOLDER + '/' +req.url.split('?')[0].split('/')[2];
 	var mimeType = mimeTypes[path.extname(filename).split('.')[1]];
 	res.writeHead(200, {'Content-Type': mimeType});
-	var fileStream = fs.createReadStream(filename);
-	fileStream.pipe(res);
+	if (!fs2.fileExists(filename) || !fs2.folderExists(config.IMG_FOLDER)) {
+		res.end();
+	} else {
+		var fileStream = fs.createReadStream(filename);
+		fileStream.pipe(res);
+	}
+
 }
 
 module.exports = loadedImgs;

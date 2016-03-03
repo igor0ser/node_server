@@ -17,7 +17,7 @@ function getFileNamesList(){
 		return 'No images was downloaded yet.'
 	}
 	for (var i = 0; i < files.length; i++){
-		list += '<li>' + files[i] + '</li>';
+		list += '<li><a href="' + config.IMG_FOLDER + '/' + files[i] + '">' + files[i] + '</a></li>';
 	}
 	return list;
 }

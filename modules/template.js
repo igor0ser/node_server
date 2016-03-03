@@ -83,6 +83,7 @@ var template = {
 			<meta charset="UTF-8">
 			<title>Form for image downloading</title>
 			<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" >
+			<script src=""></script>
 		</head>
 		<body style="background: url('http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/ignasi_pattern_s.png')"
 		>
@@ -94,6 +95,7 @@ var template = {
 				<a href="http://localhost:3000/post"><h3>Go back to the form</h3></a>
 				<a href="http://localhost:3000/"><h3>Go to the last loaded image</h3></a>
 			</div>
+			<script></script>
 		</body>
 		</html>
 	`
