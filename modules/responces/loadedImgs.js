@@ -2,20 +2,12 @@ var fs = require('fs');
 var path = require('path');
 var config = require('./../helpers/config');
 var fs2 = require('./../helpers/fs2');
+var mime = require('./../helpers/mime');
 
-var mimeTypes = {
-	'html': 'text/html',
-	'jpeg': 'image/jpeg',
-	'jpg': 'image/jpeg',
-	'png': 'image/png',
-	'js': 'text/javascript',
-	'css': 'text/css'
-};
 
 function loadedImgs(req, res){
-	console.log('images');
 	var filename = config.IMG_FOLDER + '/' +req.url.split('?')[0].split('/')[2];
-	var mimeType = mimeTypes[path.extname(filename).split('.')[1]];
+	var mimeType = mime(path.extname(filename));
 	res.writeHead(200, {'Content-Type': mimeType});
 	if (!fs2.fileExists(filename) || !fs2.folderExists(config.IMG_FOLDER)) {
 		res.end();

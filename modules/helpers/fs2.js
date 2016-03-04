@@ -19,13 +19,9 @@ function folderExists(folderPath){
 }
 
 function mkDirIfNotExits(folderPath){
-
-	console.log('folderExists =' + folderExists(folderPath));
 	if (!folderExists(folderPath)) {
 		fs.mkdirSync(folderPath)
 	}
-	console.log('and again!'); 
-	console.log('folderExists =' + folderExists(folderPath));
 }
 
 var fs2 = {

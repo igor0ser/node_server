@@ -14,8 +14,8 @@ var templates = {
 			<ul class="nav nav-tabs">
 				<li role="presentation" class="active"><a href="/" >Last image</a></li>
 				<li role="presentation"><a href="/post">Upload Image</a></li>
-				<li role="presentation"><a ui-sref="/list">List of images</a></li>
-				<li role="presentation"><a ui-sref="/secr">Secret image</a></li>
+				<li role="presentation"><a href="/list">List of images</a></li>
+				<li role="presentation"><a href="/secr">Secret image</a></li>
 			</ul>
 			<h3 class="text-center text-success">Here is last uploaded image:</h3>
 			<img src="/last" class="text-center" style="margin: 20px auto; display: block; max-width: 960px;">
@@ -43,7 +43,7 @@ var templates = {
 				<li role="presentation"><a href="/secr">Secret image</a></li>
 			</ul>
 				<h3 class="text-center text-success">Load your image here</h3>
-				<form action="/upload" method="post" enctype="multipart/form-data" style="width: 600px; margin: 10px auto">
+				<form action="/upload" method="post" enctype="multipart/form-data" style="width: 600px; margin: 10px auto" onsubmit="return Validate(this);">
 					<div class="form-group">
 						<label for="exampleInputFile">File input</label>
 						<input type="file" name="upload" required>
@@ -51,6 +51,34 @@ var templates = {
 					<button type="submit" class="btn btn-success">Submit</button>
 				</form>
 			</div>
+			<script type="text/javascript">
+				var _validFileExtensions = [".jpg", ".jpeg", ".bmp", ".gif", ".png"];	
+				function Validate(oForm) {
+					var arrInputs = oForm.getElementsByTagName("input");
+					for (var i = 0; i < arrInputs.length; i++) {
+						var oInput = arrInputs[i];
+						if (oInput.type == "file") {
+							var sFileName = oInput.value;
+							if (sFileName.length > 0) {
+								var blnValid = false;
+								for (var j = 0; j < _validFileExtensions.length; j++) {
+									var sCurExtension = _validFileExtensions[j];
+									if (sFileName.substr(sFileName.length - sCurExtension.length, sCurExtension.length).toLowerCase() == sCurExtension.toLowerCase()) {
+										blnValid = true;
+										break;
+									}
+								}
+								
+								if (!blnValid) {
+									alert("Sorry, " + sFileName + " is invalid, allowed extensions are: " + _validFileExtensions.join(", "));
+									return false;
+								}
+							}
+						}
+					}
+					return true;
+				}
+			</script>
 		</body>
 		</html>
 	`,
@@ -169,7 +197,9 @@ var templates = {
 			document.addEventListener('click', function(event){
 				if (event.target.tagName === 'A' && event.target.getAttribute('href').indexOf('img_download/') === 0){
 					event.preventDefault();
+					var flag = event.target.nextSibling;
 					deleteAll('img');
+					if (flag) return;
 					var src = event.target.getAttribute('href');
 					var img = new Image();
 					img.src = src;
@@ -180,12 +210,9 @@ var templates = {
 
 			function deleteAll(selector){
 				var elems = document.getElementsByTagName(selector);
-				console.log(elems);
 				for (var i = 0; i < elems.length; i++){
 					var xx = elems[i].parentNode.removeChild(elems[i]);
-					console.log('xx = ' + xx);
 				}
-
 			}
 
 			function insertAfter(el1, el2){

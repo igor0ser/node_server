@@ -5,8 +5,7 @@ var templates = require('./../helpers/templates');
 
 function secretImg(req, res) {
 	var querryArr = req.url.split('?')[1].split('=');
-	console.log(querryArr);
-
+	
 	if (querryArr[0] === 'password' && querryArr[1] === config.PASSWORD){
 		res.writeHead(200, {'Content-Type': 'image/jpeg'});
 		var fileStream = fs.createReadStream(config.SECRET_IMG);

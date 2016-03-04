@@ -13,7 +13,6 @@ var server = http.createServer((req, res) => {
 	var url = '/' + req.url.split('?')[0].split('/')[1];
 	console.log('url = ' + url);
 
-
 	switch (url){
 		case '/':
 			home(req, res);
@@ -43,7 +42,6 @@ var server = http.createServer((req, res) => {
 			loadedImgs(req, res);
 			break;
 		default:
-			console.log('default');
 			res.writeHead(404);
 			res.end();
 			break;
